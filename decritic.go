@@ -43,7 +43,7 @@ func main() {
 func action(c *cli.Context) error {
 	t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
 	if c.NArg() > 0 {
-		for i, in := range c.Args() {
+		for i, in := range c.Args().Slice() {
 			if i > 0 {
 				fmt.Print(" ")
 			}

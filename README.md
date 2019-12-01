@@ -1,0 +1,2 @@
+# decritic
+Remove diacritics (accents)

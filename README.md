@@ -2,7 +2,7 @@
 Remove diacritics (accents)
 
 
-## Install
+## Installation
 
 ```
 $ go get github.com/thomasleplus/decritic/cmd/decritic

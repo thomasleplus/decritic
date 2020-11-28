@@ -19,7 +19,7 @@ jobs:
     - name: Get dependencies
       run: make dep
     - name: Staticcheck
-      run: make check
+      run: make staticcheck
     - name: Build
       run: make compile
     - name: Upload artifacts

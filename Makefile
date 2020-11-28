@@ -14,10 +14,9 @@ build:
 dep:
 	go get -v -t -d ./...
 
-check:
-	export PATH=${PATH}:`go env GOPATH`/bin
+staticcheck:
 	go get -u honnef.co/go/tools/cmd/staticcheck
-	staticcheck ./...
+	`go env GOPATH`/bin/staticcheck ./...
 
 run:
 	go run cmd/decritic/decritic.go

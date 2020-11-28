@@ -1,0 +1,16 @@
+image: golang:1.13
+
+cache:
+  paths:
+    - /apt-cache
+    - /go/src/github.com
+    - /go/src/golang.org
+    - /go/src/google.golang.org
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - make

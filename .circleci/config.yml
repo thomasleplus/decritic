@@ -15,4 +15,6 @@ jobs:
     working_directory: /go/src/github.com/thomasleplus/decritic
     steps:
       - checkout
-      - run: make
+      - run: make dep
+      - run: make staticcheck
+      - run: make compile

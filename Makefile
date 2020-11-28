@@ -14,14 +14,14 @@ build:
 dep:
 	go get -v -t -d ./...
 	if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
+	    curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+	    dep ensure
 	fi
 
 check:
-        export PATH=${PATH}:`go env GOPATH`/bin
-        go get -u honnef.co/go/tools/cmd/staticcheck
-        staticcheck ./...
+	export PATH=${PATH}:`go env GOPATH`/bin
+	go get -u honnef.co/go/tools/cmd/staticcheck
+	staticcheck ./...
 
 run:
 	go run cmd/decritic/decritic.go

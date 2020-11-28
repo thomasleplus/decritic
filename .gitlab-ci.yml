@@ -8,9 +8,21 @@ cache:
     - /go/src/google.golang.org
 
 stages:
+  - dep
+  - staticcheck
   - build
+
+dep:
+  stage: dep
+  script:
+    - make dep
+
+staticcheck:
+  stage: staticcheck
+  script:
+    - make staticcheck
 
 build:
   stage: build
   script:
-    - make
+    - make compile

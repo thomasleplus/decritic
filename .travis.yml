@@ -6,10 +6,8 @@ go:
 - 1.x
 - master
 
-env:
-  - GO111MODULE=on
-
 script:
+ - cd /home/travis/gopath/src/github.com/thomasleplus/decritic
  - make dep
  - make staticcheck
  - make compile

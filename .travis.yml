@@ -7,10 +7,10 @@ go:
 - master
 
 script:
- - cd /home/travis/gopath/src/github.com/thomasleplus/decritic
- - make dep
- - make staticcheck
- - make compile
+- cd /home/travis/gopath/src/github.com/thomasleplus/decritic
+- make dep
+- make staticcheck
+- make compile
 
 notifications:
   email: true

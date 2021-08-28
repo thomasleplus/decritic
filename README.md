@@ -1,4 +1,4 @@
-# decritic
+# Decritic
 
 Remove diacritics (accents)
 

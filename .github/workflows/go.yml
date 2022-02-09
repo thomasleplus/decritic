@@ -27,6 +27,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Get dependencies
       run: make dep
+    - name: Vet
+      run: make vet
     - name: Staticcheck
       run: make staticcheck
     - name: Build

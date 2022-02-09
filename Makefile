@@ -15,8 +15,10 @@ compile:
 dep:
 	go mod download
 
+vet:
+	go vet ./...
+
 staticcheck:
-	go vet
 	go get -u honnef.co/go/tools/cmd/staticcheck
 	`go env GOPATH`/bin/staticcheck ./...
 

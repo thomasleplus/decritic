@@ -3,10 +3,11 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
+	"log"
 	"os"
 	"unicode"
 )
@@ -17,7 +18,9 @@ func main() {
 	app.Usage = "remove diacritics (accents) from strings"
 	app.Version = "0.0.1"
 	app.Action = action
-	if app.Run(os.Args) != nil {
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
 		os.Exit(1)
 	}
 }

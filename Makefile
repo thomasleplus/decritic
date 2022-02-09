@@ -13,11 +13,16 @@ compile:
 	GOOS=freebsd GOARCH=386   go build -o bin/decritic-freebsd-386 cmd/decritic/decritic.go
 
 dep:
-	go get -v -t -d ./...
+	go mod download
 
 staticcheck:
+	go vet
 	go get -u honnef.co/go/tools/cmd/staticcheck
 	`go env GOPATH`/bin/staticcheck ./...
 
 run:
 	go run cmd/decritic/decritic.go
+
+clean:
+	go clean
+	rm -Rf bin

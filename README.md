@@ -8,5 +8,5 @@ Remove diacritics (accents)
 ## Installation
 
 ```
-$ go get github.com/thomasleplus/decritic
+go install github.com/thomasleplus/decritic@latest
 ```

@@ -1,4 +1,4 @@
-module cmd
+module github.com/thomasleplus/decritic
 
 go 1.17
 

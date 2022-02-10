@@ -16,7 +16,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "decritic"
 	app.Usage = "remove diacritics (accents) from strings"
-	app.Version = "0.0.1"
+	app.Version = "0.0.2-beta.1"
 	app.Action = action
 	err := app.Run(os.Args)
 	if err != nil {

@@ -1,4 +1,9 @@
 ---
+
+include:
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Security/SAST.gitlab-ci.yml
+
 image: golang:1.15
 
 cache:
@@ -9,21 +14,25 @@ cache:
     - /go/src/google.golang.org
 
 stages:
+  - check
   - dep
   - staticcheck
   - build
 
+sast:
+  stage: check
+
 dep:
   stage: dep
   script:
-    - make dep
+    - 'make dep'
 
 staticcheck:
   stage: staticcheck
   script:
-    - make staticcheck
+    - 'make staticcheck'
 
 build:
   stage: build
   script:
-    - make compile
+    - 'make compile'

@@ -22,6 +22,9 @@ stages:
 sast:
   stage: check
 
+secret_detection:
+  stage: check
+
 dep:
   stage: dep
   script:

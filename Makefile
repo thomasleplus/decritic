@@ -2,8 +2,11 @@ build:
 	go build -o bin/decritic decritic.go
 
 compile:
-	for dist in $(go tool dist list); do
-		GOOS="${dist%/*}" GOARCH="${dist#*/}" go build -o "bin/${GOOS}/${GOARCH}/decritic" decritic.go
+	for dist in $(go tool dist list); do \
+		if [ "${dist%/*}" = "windows" ]; then \
+			ext=.exe \
+		fi \
+		GOOS="${dist%/*}" GOARCH="${dist#*/}" go build -o "bin/${GOOS}/${GOARCH}/decritic${ext}" decritic.go \
 	done
 
 dep:

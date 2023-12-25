@@ -5,6 +5,7 @@ compile:
 	for dist in $(go tool dist list); do
 		GOOS="${dist%/*}" GOARCH="${dist#*/}" go build -o "bin/${GOOS}/${GOARCH}/decritic" decritic.go
 	done
+
 dep:
 	go mod download
 

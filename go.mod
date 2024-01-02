@@ -3,7 +3,7 @@ module github.com/thomasleplus/decritic
 go 1.17
 
 require (
-	github.com/urfave/cli/v2 v2.27.0
+	github.com/urfave/cli/v2 v2.27.1
 	golang.org/x/text v0.14.0
 )
 

@@ -16,6 +16,8 @@ jobs:
     name: Build with Go
     runs-on: ubuntu-latest
     steps:
+    - name: Set REPOSITORY
+      run: echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> "${GITHUB_ENV}"
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
@@ -35,5 +37,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: decritic
+        name: ${{ env.REPOSITORY }}
         path: bin/

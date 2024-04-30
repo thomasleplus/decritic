@@ -27,6 +27,7 @@ run:
 
 test:
 	go test
+	go install
 	cat test.csv | ./test.sh
 
 clean:

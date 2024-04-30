@@ -2,6 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+find / -type f -name decritic
+
 bin="$(go env GOPATH)/bin/decritic"
 rc=0
 while IFS=$'\n' \read -r line; do

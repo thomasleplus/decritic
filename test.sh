@@ -2,7 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-find / -type f -name decritic
+find / -type f -name decritic 2> /dev/null
 
 bin="$(go env GOPATH)/bin/decritic"
 rc=0

@@ -25,6 +25,10 @@ staticcheck:
 run:
 	go run decritic.go
 
+test:
+	go test
+	cat test.csv | ./test.sh
+
 clean:
 	go clean
 	rm -Rf bin

@@ -16,8 +16,10 @@ cache:
 stages:
   - check
   - dep
+  - vet
   - staticcheck
   - build
+  - test
 
 sast:
   stage: check
@@ -39,6 +41,10 @@ dep:
   stage: dep
   script:
     - 'make dep'
+vet:
+  stage: vet
+  script:
+    - 'make vet'
 
 staticcheck:
   stage: staticcheck
@@ -49,3 +55,8 @@ build:
   stage: build
   script:
     - 'make compile'
+
+test:
+  stage: test
+  script:
+    - 'make test'

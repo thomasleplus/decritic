@@ -30,10 +30,12 @@ jobs:
       run: make dep
     - name: Vet
       run: make vet
-    - name: Staticcheck
+    - name: Static Check
       run: make staticcheck
     - name: Build
       run: make compile
+    - name: Test
+      run: make test
     - name: Upload artifacts
       uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:

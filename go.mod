@@ -4,7 +4,7 @@ go 1.22.3
 
 require (
 	github.com/urfave/cli/v2 v2.27.3
-	golang.org/x/text v0.16.0
+	golang.org/x/text v0.17.0
 )
 
 require (

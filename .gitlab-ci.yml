@@ -1,5 +1,4 @@
 ---
-
 include:
   - template: Security/Secret-Detection.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
@@ -32,7 +31,7 @@ OSV scanner:
     name: golang:latest
   stage: check
   before_script:
-    - 'go install github.com/google/osv-scanner/cmd/osv-scanner@v1'
+    - "go install github.com/google/osv-scanner/cmd/osv-scanner@v1"
   script:
     - 'PATH="${PATH}:$(go env GOPATH)/bin" osv-scanner -r .'
   timeout: 10 minutes
@@ -40,23 +39,23 @@ OSV scanner:
 dep:
   stage: dep
   script:
-    - 'make dep'
+    - "make dep"
 vet:
   stage: vet
   script:
-    - 'make vet'
+    - "make vet"
 
 staticcheck:
   stage: staticcheck
   script:
-    - 'make staticcheck'
+    - "make staticcheck"
 
 build:
   stage: build
   script:
-    - 'make compile'
+    - "make compile"
 
 test:
   stage: test
   script:
-    - 'make test'
+    - "make test"

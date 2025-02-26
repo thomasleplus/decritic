@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set REPOSITORY
+        shell: bash
         run: echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> "${GITHUB_ENV}"
       - name: Set up Go
         uses: actions/setup-go@3041bf56c941b39c61721a86cd11f3bb1338122a # v5.2.0
@@ -26,14 +27,19 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Get dependencies
+        shell: bash
         run: make dep
       - name: Vet
+        shell: bash
         run: make vet
       - name: Static Check
+        shell: bash
         run: make staticcheck
       - name: Build
+        shell: bash
         run: make compile
       - name: Test
+        shell: bash
         run: make test
       - name: Upload artifacts
         uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0

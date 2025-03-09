@@ -1,6 +1,6 @@
 module github.com/thomasleplus/decritic
 
-go 1.22.3
+go 1.24.1
 toolchain go1.23.7
 
 require (

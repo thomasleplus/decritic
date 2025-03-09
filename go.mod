@@ -1,7 +1,6 @@
 module github.com/thomasleplus/decritic
 
 go 1.24.1
-toolchain go1.23.7
 
 require (
 	github.com/urfave/cli/v2 v2.27.6

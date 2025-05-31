@@ -1,3 +1,7 @@
+default: compile
+
+.PHONY: build compile dep vet staticcheck run test clean
+
 build:
 	go build -o bin/decritic decritic.go
 

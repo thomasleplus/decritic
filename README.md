@@ -7,7 +7,7 @@ Remove diacritics (accents)
 
 ## Installation
 
-```
+```shell
 go install github.com/thomasleplus/decritic@latest
 ```
 
@@ -15,6 +15,6 @@ Make sure that your Golang path (meaning the output of the command `go env GOPAT
 
 ## Usage
 
-```
+```shell
 cat input.txt | decritic > output.txt
 ```

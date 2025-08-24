@@ -17,11 +17,17 @@ jobs:
     steps:
       - name: Set REPOSITORY
         shell: bash
-        run: echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> "${GITHUB_ENV}"
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'	
+          echo "REPOSITORY=${GITHUB_REPOSITORY#*/}" >> "${GITHUB_ENV}"
       - name: Check out code into the Go module directory
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Set SOURCE_DATE_EPOCH
-        run: echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)" >> "${GITHUB_ENV}"
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'	
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --pretty=%ct)" >> "${GITHUB_ENV}"
       - name: Set up Go
         uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
         with:
@@ -30,19 +36,34 @@ jobs:
         id: go
       - name: Get dependencies
         shell: bash
-        run: make dep
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          make dep
       - name: Vet
         shell: bash
-        run: make vet
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          make vet
       - name: Static Check
         shell: bash
-        run: make staticcheck
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          make staticcheck
       - name: Build
         shell: bash
-        run: make compile
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          make compile
       - name: Test
         shell: bash
-        run: make test
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          make test
       - name: Upload artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:

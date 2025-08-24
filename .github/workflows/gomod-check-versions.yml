@@ -22,4 +22,9 @@ jobs:
         id: go
       - name: Check the versions
         shell: bash
-        run: make upgrade | tee -a /dev/stderr | grep -q -e ' upgraded ' && exit 1
+        run: |
+          set -euo pipefail
+          IFS=$'\n\t'
+          if make upgrade | tee -a /dev/stderr | grep -q -e ' upgraded '; then
+            exit 1
+          fi

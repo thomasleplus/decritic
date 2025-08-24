@@ -1,6 +1,6 @@
 default: compile
 
-.PHONY: build compile dep vet staticcheck run test clean
+.PHONY: build compile dep vet staticcheck run test update clean
 
 build:
 	go build -o bin/decritic decritic.go
@@ -33,6 +33,10 @@ test:
 	go test
 	go install
 	cat test.csv | ./test.sh
+
+update:
+	go get -u
+	go mod tidy
 
 clean:
 	go clean

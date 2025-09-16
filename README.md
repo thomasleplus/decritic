@@ -11,7 +11,7 @@ Remove diacritics (accents)
 go install github.com/thomasleplus/decritic@latest
 ```
 
-Make sure that your Golang path (meaning the output of the command `go env GOPATH`, e.g. "${HOME}/go/bin") is included in your PATH environment variable.
+Make sure that your Go path (meaning the output of the command `go env GOPATH`, e.g. "${HOME}/go/bin") is included in your PATH environment variable.
 
 ## Usage
 

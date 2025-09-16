@@ -3,13 +3,14 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
+	"os"
+	"unicode"
+
 	"github.com/urfave/cli/v2"
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
-	"log"
-	"os"
-	"unicode"
 )
 
 func main() {
@@ -31,7 +32,10 @@ func action(c *cli.Context) error {
 			if i > 0 {
 				fmt.Print(" ")
 			}
-			out, _, _ := transform.String(t, in)
+			out, _, err := transform.String(t, in)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "decritic: transform error: ", err)
+			}
 			fmt.Print(out)
 		}
 	} else {

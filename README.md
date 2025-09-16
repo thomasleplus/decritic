@@ -15,6 +15,14 @@ Make sure that your Go path (meaning the output of the command `go env GOPATH`, 
 
 ## Usage
 
+To get help, run the following:
+```shell
+decritic -h
+```
+
+In short, `decritic` can either read from files or from `stdin`:
+
 ```shell
 cat input.txt | decritic > output.txt
+decritic input.txt > output.txt
 ```

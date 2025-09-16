@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"unicode"
 
 	"github.com/urfave/cli/v2"
@@ -17,7 +18,14 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "decritic"
 	app.Usage = "remove diacritics (accents) from strings"
-	app.Version = "0.0.2"
+	app.Version = "0.0.3"
+	app.Flags = []cli.Flag{
+		&cli.BoolFlag{
+			Name:    "extended",
+			Aliases: []string{"x"},
+			Usage:   "enable extended transliterations (e.g. æ -> ae, œ -> oe, ð -> d, þ -> th, ł -> l)",
+		},
+	}
 	app.Action = action
 	err := app.Run(os.Args)
 	if err != nil {
@@ -26,6 +34,15 @@ func main() {
 }
 
 func action(c *cli.Context) error {
+	// Custom transliterations
+	customReplacer := strings.NewReplacer(
+		"æ", "ae", "Æ", "AE",
+		"œ", "oe", "Œ", "OE",
+		"ð", "d", "Ð", "D",
+		"þ", "th", "Þ", "TH",
+		"ł", "l", "Ł", "L",
+	)
+
 	t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
 	if c.NArg() > 0 {
 		for i, in := range c.Args().Slice() {
@@ -36,6 +53,9 @@ func action(c *cli.Context) error {
 			if err != nil {
 				fmt.Fprintln(os.Stderr, "decritic: transform error: ", err)
 			}
+			if c.Bool("extended") {
+				out = customReplacer.Replace(out)
+			}
 			fmt.Print(out)
 		}
 	} else {
@@ -44,6 +64,9 @@ func action(c *cli.Context) error {
 			out, _, err := transform.String(t, scanner.Text())
 			if err != nil {
 				fmt.Fprintln(os.Stderr, "decritic: transform error: ", err)
+			}
+			if c.Bool("extended") {
+				out = customReplacer.Replace(out)
 			}
 			fmt.Println(out)
 		}

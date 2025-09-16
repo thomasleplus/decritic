@@ -49,20 +49,27 @@ func TestDecritic(t *testing.T) {
 
 			// Redirect stdout to a buffer to capture the output
 			oldStdout := os.Stdout
-			r, w, _ := os.Pipe()
+			r, w, err := os.Pipe()
+			if err != nil {
+				t.Fatal(err)
+			}
 			os.Stdout = w
 
 			// Run the action with the test input
 			args := os.Args[0:1]
 			args = append(args, strings.Split(tt.input, " ")...)
-			app.Run(args)
+			if err := app.Run(args); err != nil {
+				t.Fatal(err)
+			}
 
 			// Restore stdout
 			w.Close()
 			os.Stdout = oldStdout
 
 			var buf bytes.Buffer
-			io.Copy(&buf, r)
+			if _, err := io.Copy(&buf, r); err != nil {
+				t.Fatal(err)
+			}
 			got := strings.TrimSpace(buf.String())
 
 			if got != tt.expected {

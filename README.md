@@ -16,6 +16,7 @@ Make sure that your Go path (meaning the output of the command `go env GOPATH`, 
 ## Usage
 
 To get help, run the following:
+
 ```shell
 decritic -h
 ```

@@ -11,7 +11,7 @@ on:
 permissions: {}
 
 jobs:
-  build:
+  go:
     name: Build with Go
     runs-on: ubuntu-latest
     steps:

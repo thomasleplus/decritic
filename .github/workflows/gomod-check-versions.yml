@@ -9,7 +9,7 @@ on:
 permissions: {}
 
 jobs:
-  check:
+  gomod-check-versions:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory

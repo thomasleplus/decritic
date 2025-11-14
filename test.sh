@@ -8,7 +8,7 @@ while IFS=$'\n' read -r line; do
 	IFS=',' read -ra array <<<"${line}"
 	input="${array[0]}"
 	expected="${array[1]}"
-	actual="$(${bin} <<< "${input}")"
+	actual="$(${bin} <<<"${input}")"
 	if [ "${actual}" != "${expected}" ]; then
 		>&2 echo "input=${input}, expected=${expected}, actual=${actual}"
 		rc=$((rc + 1))

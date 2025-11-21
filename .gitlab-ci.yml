@@ -20,6 +20,9 @@ stages:
   - build
   - test
 
+variables:
+  GIT_DEPTH: 1
+
 sast:
   stage: check
 

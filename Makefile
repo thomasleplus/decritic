@@ -35,7 +35,7 @@ test:
 	cat test.csv | ./test.sh
 
 update:
-	go get -u
+	go get -u ./...
 	go mod tidy
 
 clean:

@@ -1,5 +1,5 @@
 ---
-name: Go Mod Check Versions
+name: Go Check Versions
 
 on:
   schedule:
@@ -28,6 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          if make upgrade | tee -a /dev/stderr | grep -q -e ' upgraded '; then
+          output=$(make update 2>&1 | tee /dev/stderr)
+          if echo "$output" | grep -q -e ' upgraded '; then
             exit 1
           fi

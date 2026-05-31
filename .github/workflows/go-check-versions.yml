@@ -9,10 +9,10 @@ on:
 permissions: {}
 
 jobs:
-  gomod-check-versions:
+  go-check-versions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code into the Go module directory
+      - name: Check out
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 1
@@ -22,13 +22,9 @@ jobs:
         with:
           go-version: "stable"
           check-latest: true
-        id: go
       - name: Check the versions
         shell: bash
         run: |
           set -euo pipefail
           IFS=$'\n\t'
-          output=$(make update 2>&1 | tee /dev/stderr)
-          if echo "$output" | grep -q -e ' upgraded '; then
-            exit 1
-          fi
+          ! make update 2>&1 | tee /dev/stderr | grep -q -e ' upgraded '

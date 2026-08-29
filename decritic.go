@@ -1,3 +1,6 @@
+// Command decritic reads text (from its arguments, or from stdin line by line)
+// and removes diacritics (accents), optionally applying extended
+// transliterations for letters that have no simple decomposed form.
 package main
 
 import (
@@ -43,6 +46,8 @@ func action(c *cli.Context) error {
 		"ł", "l", "Ł", "L",
 	)
 
+	// Decompose to NFD, drop the combining marks (Unicode category Mn) that
+	// carry the accents, then recompose to NFC.
 	t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
 	if c.NArg() > 0 {
 		for i, in := range c.Args().Slice() {
